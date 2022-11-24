@@ -1,0 +1,31 @@
+{
+  "applications": ["ElementarySchool"],
+  "changelogDate": "20221124081446",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "classe",
+  "fields": [
+    {
+      "fieldName": "sezione",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "anno",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Classe",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "alunno",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "alunno",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

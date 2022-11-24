@@ -1,0 +1,48 @@
+{
+  "applications": ["ElementarySchool"],
+  "changelogDate": "20221124081346",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "alunno",
+  "fields": [
+    {
+      "fieldName": "matricola",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cognome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataNascita",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Alunno",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "alunno",
+      "relationshipName": "classe",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "compitoSvolto",
+      "otherEntityRelationshipName": "alunno",
+      "relationshipName": "compito",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

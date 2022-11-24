@@ -1,0 +1,32 @@
+{
+  "applications": ["ElementarySchool"],
+  "changelogDate": "20221124081546",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "compito",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "materia",
+      "fieldType": "Materia",
+      "fieldValues": "STORIA,ITALIANO,INGLESE,MATEMATICA"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Compito",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "compitoSvolto",
+      "otherEntityRelationshipName": "compito",
+      "relationshipName": "alunno",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

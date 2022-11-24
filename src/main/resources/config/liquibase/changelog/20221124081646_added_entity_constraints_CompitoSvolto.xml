@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity CompitoSvolto.
+    -->
+    <changeSet id="20221124081646-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="alunno_id"
+                                 baseTableName="compito_svolto"
+                                 constraintName="fk_compito_svolto__alunno_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="alunno"/>
+
+        <addForeignKeyConstraint baseColumnNames="compito_id"
+                                 baseTableName="compito_svolto"
+                                 constraintName="fk_compito_svolto__compito_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compito"/>
+    </changeSet>
+</databaseChangeLog>

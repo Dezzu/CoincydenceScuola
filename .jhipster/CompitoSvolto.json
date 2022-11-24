@@ -1,0 +1,37 @@
+{
+  "applications": ["ElementarySchool"],
+  "changelogDate": "20221124081646",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "compito_svolto",
+  "fields": [
+    {
+      "fieldName": "voto",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CompitoSvolto",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "alunno",
+      "otherEntityRelationshipName": "compito",
+      "relationshipName": "alunno",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "compito",
+      "otherEntityRelationshipName": "alunno",
+      "relationshipName": "compito",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
