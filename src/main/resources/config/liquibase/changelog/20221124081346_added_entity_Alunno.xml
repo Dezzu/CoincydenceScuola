@@ -14,9 +14,6 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="matricola" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="nome" type="varchar(255)">
                 <constraints nullable="false" />
             </column>

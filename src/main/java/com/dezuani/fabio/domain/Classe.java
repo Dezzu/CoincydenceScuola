@@ -32,8 +32,8 @@ public class Classe implements Serializable {
 
     @OneToMany(mappedBy = "classe")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "classe", "compitos" }, allowSetters = true)
-    private Set<Alunno> alunnos = new HashSet<>();
+    @JsonIgnoreProperties(value = { "classe", "compiti" }, allowSetters = true)
+    private Set<Alunno> alunni = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -76,33 +76,33 @@ public class Classe implements Serializable {
         this.anno = anno;
     }
 
-    public Set<Alunno> getAlunnos() {
-        return this.alunnos;
+    public Set<Alunno> getAlunni() {
+        return this.alunni;
     }
 
-    public void setAlunnos(Set<Alunno> alunnos) {
-        if (this.alunnos != null) {
-            this.alunnos.forEach(i -> i.setClasse(null));
+    public void setAlunni(Set<Alunno> alunnos) {
+        if (this.alunni != null) {
+            this.alunni.forEach(i -> i.setClasse(null));
         }
         if (alunnos != null) {
             alunnos.forEach(i -> i.setClasse(this));
         }
-        this.alunnos = alunnos;
+        this.alunni = alunnos;
     }
 
     public Classe alunnos(Set<Alunno> alunnos) {
-        this.setAlunnos(alunnos);
+        this.setAlunni(alunnos);
         return this;
     }
 
     public Classe addAlunno(Alunno alunno) {
-        this.alunnos.add(alunno);
+        this.alunni.add(alunno);
         alunno.setClasse(this);
         return this;
     }
 
     public Classe removeAlunno(Alunno alunno) {
-        this.alunnos.remove(alunno);
+        this.alunni.remove(alunno);
         alunno.setClasse(null);
         return this;
     }

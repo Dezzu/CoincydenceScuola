@@ -1,5 +1,7 @@
 package com.dezuani.fabio.web.rest;
 
+import static com.dezuani.fabio.config.Constants.COMPITO_ENTITY;
+
 import com.dezuani.fabio.repository.CompitoRepository;
 import com.dezuani.fabio.service.CompitoService;
 import com.dezuani.fabio.service.dto.CompitoDTO;
@@ -41,13 +43,13 @@ public class CompitoResource {
     }
 
     /**
-     * {@code POST  /compitos} : Create a new compito.
+     * {@code POST  /compiti} : Create a new compito.
      *
      * @param compitoDTO the compitoDTO to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new compitoDTO, or with status {@code 400 (Bad Request)} if the compito has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/compitos")
+    @PostMapping("/compiti")
     public ResponseEntity<CompitoDTO> createCompito(@RequestBody CompitoDTO compitoDTO) throws URISyntaxException {
         log.debug("REST request to save Compito : {}", compitoDTO);
         if (compitoDTO.getId() != null) {
@@ -55,13 +57,13 @@ public class CompitoResource {
         }
         CompitoDTO result = compitoService.save(compitoDTO);
         return ResponseEntity
-            .created(new URI("/api/compitos/" + result.getId()))
+            .created(new URI("/api/compiti/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /compitos/:id} : Updates an existing compito.
+     * {@code PUT  /compiti/:id} : Updates an existing compito.
      *
      * @param id the id of the compitoDTO to save.
      * @param compitoDTO the compitoDTO to update.
@@ -70,7 +72,7 @@ public class CompitoResource {
      * or with status {@code 500 (Internal Server Error)} if the compitoDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/compitos/{id}")
+    @PutMapping("/compiti/{id}")
     public ResponseEntity<CompitoDTO> updateCompito(
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CompitoDTO compitoDTO
@@ -95,7 +97,7 @@ public class CompitoResource {
     }
 
     /**
-     * {@code PATCH  /compitos/:id} : Partial updates given fields of an existing compito, field will ignore if it is null
+     * {@code PATCH  /compiti/:id} : Partial updates given fields of an existing compito, field will ignore if it is null
      *
      * @param id the id of the compitoDTO to save.
      * @param compitoDTO the compitoDTO to update.
@@ -105,7 +107,7 @@ public class CompitoResource {
      * or with status {@code 500 (Internal Server Error)} if the compitoDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/compitos/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PatchMapping(value = "/compiti/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<CompitoDTO> partialUpdateCompito(
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CompitoDTO compitoDTO
@@ -131,23 +133,23 @@ public class CompitoResource {
     }
 
     /**
-     * {@code GET  /compitos} : get all the compitos.
+     * {@code GET  /compiti} : get all the compiti.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of compitos in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of compiti in body.
      */
-    @GetMapping("/compitos")
+    @GetMapping("/compiti")
     public List<CompitoDTO> getAllCompitos() {
         log.debug("REST request to get all Compitos");
         return compitoService.findAll();
     }
 
     /**
-     * {@code GET  /compitos/:id} : get the "id" compito.
+     * {@code GET  /compiti/:id} : get the "id" compito.
      *
      * @param id the id of the compitoDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the compitoDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/compitos/{id}")
+    @GetMapping("/compiti/{id}")
     public ResponseEntity<CompitoDTO> getCompito(@PathVariable Long id) {
         log.debug("REST request to get Compito : {}", id);
         Optional<CompitoDTO> compitoDTO = compitoService.findOne(id);
@@ -155,15 +157,19 @@ public class CompitoResource {
     }
 
     /**
-     * {@code DELETE  /compitos/:id} : delete the "id" compito.
+     * {@code DELETE  /compiti/:id} : delete the "id" compito.
      *
      * @param id the id of the compitoDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/compitos/{id}")
+    @DeleteMapping("/compiti/{id}")
     public ResponseEntity<Void> deleteCompito(@PathVariable Long id) {
         log.debug("REST request to delete Compito : {}", id);
-        compitoService.delete(id);
+        try {
+            compitoService.delete(id);
+        } catch (Exception e) {
+            throw new BadRequestAlertException("Compiti svolti present for this compito", COMPITO_ENTITY, "compitiSvoltiExists");
+        }
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

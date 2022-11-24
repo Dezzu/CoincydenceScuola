@@ -1,9 +1,15 @@
 package com.dezuani.fabio.service;
 
+import static com.dezuani.fabio.config.Constants.ALUNNO_ENTITY;
+
 import com.dezuani.fabio.domain.Alunno;
+import com.dezuani.fabio.domain.Classe;
 import com.dezuani.fabio.repository.AlunnoRepository;
+import com.dezuani.fabio.repository.ClasseRepository;
+import com.dezuani.fabio.repository.CompitoSvoltoRepository;
 import com.dezuani.fabio.service.dto.AlunnoDTO;
 import com.dezuani.fabio.service.mapper.AlunnoMapper;
+import com.dezuani.fabio.web.rest.errors.BadRequestAlertException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -23,11 +29,20 @@ public class AlunnoService {
     private final Logger log = LoggerFactory.getLogger(AlunnoService.class);
 
     private final AlunnoRepository alunnoRepository;
+    private final ClasseRepository classeRepository;
+    private final CompitoSvoltoRepository compitoSvoltoRepository;
 
     private final AlunnoMapper alunnoMapper;
 
-    public AlunnoService(AlunnoRepository alunnoRepository, AlunnoMapper alunnoMapper) {
+    public AlunnoService(
+        AlunnoRepository alunnoRepository,
+        ClasseRepository classeRepository,
+        CompitoSvoltoRepository compitoSvoltoRepository,
+        AlunnoMapper alunnoMapper
+    ) {
         this.alunnoRepository = alunnoRepository;
+        this.classeRepository = classeRepository;
+        this.compitoSvoltoRepository = compitoSvoltoRepository;
         this.alunnoMapper = alunnoMapper;
     }
 
@@ -39,7 +54,12 @@ public class AlunnoService {
      */
     public AlunnoDTO save(AlunnoDTO alunnoDTO) {
         log.debug("Request to save Alunno : {}", alunnoDTO);
+        Classe classe = classeRepository
+            .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+            .orElse(null);
+        if (classe == null) return null;
         Alunno alunno = alunnoMapper.toEntity(alunnoDTO);
+        alunno.setClasse(classe);
         alunno = alunnoRepository.save(alunno);
         return alunnoMapper.toDto(alunno);
     }
@@ -52,7 +72,12 @@ public class AlunnoService {
      */
     public AlunnoDTO update(AlunnoDTO alunnoDTO) {
         log.debug("Request to update Alunno : {}", alunnoDTO);
+        Classe classe = classeRepository
+            .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+            .orElse(null);
+        if (classe == null) return null;
         Alunno alunno = alunnoMapper.toEntity(alunnoDTO);
+        alunno.setClasse(classe);
         alunno = alunnoRepository.save(alunno);
         return alunnoMapper.toDto(alunno);
     }
@@ -69,8 +94,12 @@ public class AlunnoService {
         return alunnoRepository
             .findById(alunnoDTO.getId())
             .map(existingAlunno -> {
+                Classe classe = classeRepository
+                    .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+                    .orElse(null);
+                if (classe == null) return null;
+                existingAlunno.setClasse(classe);
                 alunnoMapper.partialUpdate(existingAlunno, alunnoDTO);
-
                 return existingAlunno;
             })
             .map(alunnoRepository::save)
@@ -98,6 +127,16 @@ public class AlunnoService {
     public Optional<AlunnoDTO> findOne(Long id) {
         log.debug("Request to get Alunno : {}", id);
         return alunnoRepository.findById(id).map(alunnoMapper::toDto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AlunnoDTO> findByClasse(Integer anno, String sezione) {
+        log.debug("Request to get all Alunnos by classe");
+        return alunnoRepository
+            .findAllByClasseAnnoAndClasseSezione(anno, sezione)
+            .stream()
+            .map(alunnoMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

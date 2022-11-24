@@ -2,6 +2,10 @@ package com.dezuani.fabio.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * A DTO for the {@link com.dezuani.fabio.domain.Classe} entity.
@@ -11,8 +15,13 @@ public class ClasseDTO implements Serializable {
 
     private Long id;
 
+    @Size(min = 1, max = 1)
+    @NotNull
     private String sezione;
 
+    @Min(1)
+    @Max(5)
+    @NotNull
     private Integer anno;
 
     public Long getId() {

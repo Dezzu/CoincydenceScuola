@@ -1,0 +1,4192 @@
+{
+  "info": {
+    "_postman_id": "4aa32d11-7ecb-42df-84b1-393d79703a84",
+    "name": "CoincydenceApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9324418"
+  },
+  "item": [
+    {
+      "name": "Alunni",
+      "item": [
+        {
+          "name": "Get Alunni",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alunni",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni"]
+            }
+          },
+          "response": [
+            {
+              "name": "Get alunni 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/alunni",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:36:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 3,\n        \"nome\": \"Alunno2\",\n        \"cognome\": \"AlunnoCognome2\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 2,\n            \"sezione\": \"B\",\n            \"anno\": 1\n        }\n    },\n    {\n        \"id\": 4,\n        \"nome\": \"Alunno2\",\n        \"cognome\": \"AlunnoCognome2\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 26,\n            \"sezione\": \"A\",\n            \"anno\": 6\n        }\n    },\n    {\n        \"id\": 5,\n        \"nome\": \"Alunno1\",\n        \"cognome\": \"AlunnoCognome1\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 26,\n            \"sezione\": \"A\",\n            \"anno\": 6\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Alunno By Id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alunni/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "alunnoId",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Alunno By Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/alunni/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "alunnoId",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:36:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"nome\": \"Alunno2\",\n    \"cognome\": \"AlunnoCognome2\",\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\n    \"classe\": {\n        \"id\": 26,\n        \"sezione\": \"A\",\n        \"anno\": 6\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Alunni By Classe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alunni/classe/:anno/:sezione",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni", "classe", ":anno", ":sezione"],
+              "variable": [
+                {
+                  "key": "anno",
+                  "value": "1"
+                },
+                {
+                  "key": "sezione",
+                  "value": "B"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Alunni By Classe 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/alunni/classe/:anno/:sezione",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni", "classe", ":anno", ":sezione"],
+                  "variable": [
+                    {
+                      "key": "anno",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sezione",
+                      "value": "B"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:36:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 3,\n        \"nome\": \"Alunno2\",\n        \"cognome\": \"AlunnoCognome2\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 2,\n            \"sezione\": \"B\",\n            \"anno\": 1\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Update Alunno",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Alunno1\",\r\n    \"cognome\": \"AlunnoCognome1\",\r\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\r\n    \"classe\": {\r\n        \"sezione\": \"A\",\r\n        \"anno\": 4\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alunni/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "alunnoId",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Alunno",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Alunno1\",\r\n    \"cognome\": \"AlunnoCognome1\",\r\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\r\n    \"classe\": {\r\n        \"sezione\": \"A\",\r\n        \"anno\": 4\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alunni/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "alunnoId",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 16:02:20 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "2"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.alunno.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"nome\": \"Alunno1\",\n    \"cognome\": \"AlunnoCognome1\",\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\n    \"classe\": {\n        \"id\": 16,\n        \"sezione\": \"A\",\n        \"anno\": 4\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Partial Update Alunno",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Alunno1Updated\",\r\n    \"classe\": {\r\n        \"sezione\": \"E\",\r\n        \"anno\": 4\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alunni/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "alunnoId",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Partial Update Alunno 200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Alunno1Updated\",\r\n    \"classe\": {\r\n        \"sezione\": \"E\",\r\n        \"anno\": 4\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alunni/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "alunnoId",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 16:06:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "2"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.alunno.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"nome\": \"Alunno1Updated\",\n    \"cognome\": \"AlunnoCognome1\",\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\n    \"classe\": {\n        \"id\": 20,\n        \"sezione\": \"E\",\n        \"anno\": 4\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Alunno",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alunni/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "alunnoId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Alunno 204",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alunni/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "alunnoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 16:00:22 GMT"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.alunno.deleted"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Add Alunno",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\" : \"Alunno1\",\r\n    \"cognome\" : \"AlunnoCognome1\",\r\n    \"dataNascita\" : \"2000-02-03T00:00:00.00Z\",\r\n    \"classe\" : {\r\n        \"sezione\": \"A\",\r\n        \"anno\": 5\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alunni",
+              "host": ["{{baseUrl}}"],
+              "path": ["alunni"]
+            }
+          },
+          "response": [
+            {
+              "name": "Aggiunta alunno 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\" : \"Alunno1\",\r\n    \"cognome\" : \"AlunnoCognome1\",\r\n    \"dataNascita\" : \"2000-02-03T00:00:00.00Z\",\r\n    \"classe\" : {\r\n        \"sezione\": \"A\",\r\n        \"anno\": 6\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alunni",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["alunni"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/alunni/5"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:36:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "5"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.alunno.created"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 5,\n    \"nome\": \"Alunno1\",\n    \"cognome\": \"AlunnoCognome1\",\n    \"dataNascita\": \"2000-02-03T00:00:00Z\",\n    \"classe\": {\n        \"id\": 26,\n        \"sezione\": \"A\",\n        \"anno\": 6\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Registration",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"login\" : \"test\",\r\n    \"password\" : \"password\",\r\n    \"firstName\" : \"Nome\",\r\n    \"lastName\" : \"cognome\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["register"]
+            }
+          },
+          "response": [
+            {
+              "name": "Registration",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"login\" : \"test\",\r\n    \"password\" : \"password\",\r\n    \"firstName\" : \"Nome\",\r\n    \"lastName\" : \"cognome\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["register"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:58:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": ["const jsonData = pm.response.json();\r", "pm.environment.set(\"accessToken\", jsonData.id_token);\r", ""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"user\",\r\n    \"password\" : \"user\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/authenticate",
+              "host": ["{{baseUrl}}"],
+              "path": ["authenticate"]
+            }
+          },
+          "response": [
+            {
+              "name": "Login 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\" : \"user\",\r\n    \"password\" : \"user\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["authenticate"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:58:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2OTM4ODMxNH0.VKMpouTaSCZvy0uCx0TGGRkHUTj-QLB_hDLiMw_KdL5_s4N98H8y1uarYpRScxh-k2Jj_G4lePUzzfZolaqwoA"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2OTM4ODMxNH0.VKMpouTaSCZvy0uCx0TGGRkHUTj-QLB_hDLiMw_KdL5_s4N98H8y1uarYpRScxh-k2Jj_G4lePUzzfZolaqwoA\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Classi",
+      "item": [
+        {
+          "name": "Get Classi",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/public/classi",
+              "host": ["{{baseUrl}}"],
+              "path": ["public", "classi"]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Classi 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/public/classi",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["public", "classi"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:59:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"sezione\": \"A\",\n        \"anno\": 1\n    },\n    {\n        \"id\": 2,\n        \"sezione\": \"B\",\n        \"anno\": 1\n    },\n    {\n        \"id\": 3,\n        \"sezione\": \"C\",\n        \"anno\": 1\n    },\n    {\n        \"id\": 4,\n        \"sezione\": \"D\",\n        \"anno\": 1\n    },\n    {\n        \"id\": 5,\n        \"sezione\": \"E\",\n        \"anno\": 1\n    },\n    {\n        \"id\": 6,\n        \"sezione\": \"A\",\n        \"anno\": 2\n    },\n    {\n        \"id\": 7,\n        \"sezione\": \"E\",\n        \"anno\": 2\n    },\n    {\n        \"id\": 8,\n        \"sezione\": \"C\",\n        \"anno\": 2\n    },\n    {\n        \"id\": 9,\n        \"sezione\": \"D\",\n        \"anno\": 2\n    },\n    {\n        \"id\": 10,\n        \"sezione\": \"E\",\n        \"anno\": 2\n    },\n    {\n        \"id\": 11,\n        \"sezione\": \"A\",\n        \"anno\": 3\n    },\n    {\n        \"id\": 12,\n        \"sezione\": \"B\",\n        \"anno\": 3\n    },\n    {\n        \"id\": 13,\n        \"sezione\": \"C\",\n        \"anno\": 3\n    },\n    {\n        \"id\": 14,\n        \"sezione\": \"D\",\n        \"anno\": 3\n    },\n    {\n        \"id\": 15,\n        \"sezione\": \"E\",\n        \"anno\": 3\n    },\n    {\n        \"id\": 16,\n        \"sezione\": \"A\",\n        \"anno\": 4\n    },\n    {\n        \"id\": 17,\n        \"sezione\": \"B\",\n        \"anno\": 4\n    },\n    {\n        \"id\": 18,\n        \"sezione\": \"C\",\n        \"anno\": 4\n    },\n    {\n        \"id\": 19,\n        \"sezione\": \"D\",\n        \"anno\": 4\n    },\n    {\n        \"id\": 20,\n        \"sezione\": \"E\",\n        \"anno\": 4\n    },\n    {\n        \"id\": 21,\n        \"sezione\": \"A\",\n        \"anno\": 5\n    },\n    {\n        \"id\": 22,\n        \"sezione\": \"B\",\n        \"anno\": 5\n    },\n    {\n        \"id\": 23,\n        \"sezione\": \"C\",\n        \"anno\": 5\n    },\n    {\n        \"id\": 24,\n        \"sezione\": \"D\",\n        \"anno\": 5\n    },\n    {\n        \"id\": 25,\n        \"sezione\": \"E\",\n        \"anno\": 5\n    },\n    {\n        \"id\": 26,\n        \"sezione\": \"A\",\n        \"anno\": 6\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Classe",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/public/classi/:anno/:sezione",
+              "host": ["{{baseUrl}}"],
+              "path": ["public", "classi", ":anno", ":sezione"],
+              "variable": [
+                {
+                  "key": "anno",
+                  "value": "1"
+                },
+                {
+                  "key": "sezione",
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Classe 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/public/classi/:anno/:sezione",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["public", "classi", ":anno", ":sezione"],
+                  "variable": [
+                    {
+                      "key": "anno",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sezione",
+                      "value": "B"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:59:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"sezione\": \"B\",\n    \"anno\": 1\n}"
+            },
+            {
+              "name": "Get Classe 404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/public/classi/:anno/:sezione",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["public", "classi", ":anno", ":sezione"],
+                  "variable": [
+                    {
+                      "key": "anno",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sezione",
+                      "value": "F"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:59:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"detail\": \"404 NOT_FOUND\",\n    \"path\": \"/api/public/classi/1/F\",\n    \"message\": \"error.http.404\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Classe By Id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/public/classi/:classeId",
+              "host": ["{{baseUrl}}"],
+              "path": ["public", "classi", ":classeId"],
+              "variable": [
+                {
+                  "key": "classeId",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Classe By Id 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/public/classi/:classeId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["public", "classi", ":classeId"],
+                  "variable": [
+                    {
+                      "key": "classeId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:00:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"sezione\": \"A\",\n    \"anno\": 1\n}"
+            },
+            {
+              "name": "Get Classe By Id 404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/public/classi/:classeId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["public", "classi", ":classeId"],
+                  "variable": [
+                    {
+                      "key": "classeId",
+                      "value": "30"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:00:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"detail\": \"404 NOT_FOUND\",\n    \"path\": \"/api/public/classi/30\",\n    \"message\": \"error.http.404\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Classe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"sezione\": \"A\",\r\n    \"anno\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classi/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["classi", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Classe 200",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 1,\r\n    \"sezione\": \"A\",\r\n    \"anno\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:00:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.classe.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"sezione\": \"A\",\n    \"anno\": 1\n}"
+            },
+            {
+              "name": "Update Classe 400",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 1,\r\n    \"sezione\": \"A\",\r\n    \"anno\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:00:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "classe"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.classeExists"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"classe\",\n    \"errorKey\": \"classeExists\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Classe already present\",\n    \"status\": 400,\n    \"message\": \"error.classeExists\",\n    \"params\": \"classe\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Partial Update Classe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\" : 1,\r\n    \"anno\" : 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classi/:classeId",
+              "host": ["{{baseUrl}}"],
+              "path": ["classi", ":classeId"],
+              "variable": [
+                {
+                  "key": "classeId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Partial Update Classe 200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\" : 1,\r\n    \"anno\" : 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi/:classeId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi", ":classeId"],
+                  "variable": [
+                    {
+                      "key": "classeId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:01:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.classe.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"sezione\": \"A\",\n    \"anno\": 1\n}"
+            },
+            {
+              "name": "Partial Update Classe",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\" : 1,\r\n    \"anno\" : 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi/:classeId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi", ":classeId"],
+                  "variable": [
+                    {
+                      "key": "classeId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:01:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "classe"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.classeExists"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"classe\",\n    \"errorKey\": \"classeExists\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Classe already present\",\n    \"status\": 400,\n    \"message\": \"error.classeExists\",\n    \"params\": \"classe\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Classe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classi/:anno/:sezione",
+              "host": ["{{baseUrl}}"],
+              "path": ["classi", ":anno", ":sezione"],
+              "variable": [
+                {
+                  "key": "anno",
+                  "value": "1"
+                },
+                {
+                  "key": "sezione",
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Classe 400",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi/:anno/:sezione",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi", ":anno", ":sezione"],
+                  "variable": [
+                    {
+                      "key": "anno",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sezione",
+                      "value": "A"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:01:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "classe"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.alunniExists"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"classe\",\n    \"errorKey\": \"alunniExists\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Alunni present for anno and sezione\",\n    \"status\": 400,\n    \"message\": \"error.alunniExists\",\n    \"params\": \"classe\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Classe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anno\" : 5,\r\n    \"sezione\" : \"A\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classi",
+              "host": ["{{baseUrl}}"],
+              "path": ["classi"]
+            }
+          },
+          "response": [
+            {
+              "name": "Add Classe 400",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"anno\" : 5,\r\n    \"sezione\" : \"A\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classi",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["classi"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 14:59:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "classe"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.classeExists"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"classe\",\n    \"errorKey\": \"classeExists\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Classe already present\",\n    \"status\": 400,\n    \"message\": \"error.classeExists\",\n    \"params\": \"classe\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Compiti",
+      "item": [
+        {
+          "name": "Get Compiti",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti/",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compiti 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ""]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compito 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:17 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"data\": \"2000-02-03T00:00:00Z\",\n    \"materia\": \"MATEMATICA\"\n}"
+            },
+            {
+              "name": "Get Compito 404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"detail\": \"404 NOT_FOUND\",\n    \"path\": \"/api/compiti/3\",\n    \"message\": \"error.http.404\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"data\": \"2000-02-03T00:00:00Z\",\r\n    \"materia\": \"STORIA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Compito",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 1,\r\n    \"data\": \"2000-02-03T00:00:00Z\",\r\n    \"materia\": \"STORIA\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compito.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"data\": \"2000-02-03T00:00:00Z\",\n    \"materia\": \"STORIA\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Partial Update Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"materia\": \"MATEMATICA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Partial Update Compito 200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 1,\r\n    \"materia\": \"MATEMATICA\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compito.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"data\": \"2000-02-03T00:00:00Z\",\n    \"materia\": \"MATEMATICA\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Compito 400",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:02:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "compito"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.compitiSvoltiExists"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"compito\",\n    \"errorKey\": \"compitiSvoltiExists\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Compiti svolti present for this compito\",\n    \"status\": 400,\n    \"message\": \"error.compitiSvoltiExists\",\n    \"params\": \"compito\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"materia\" : \"MATEMATICA\",\r\n    \"data\" : \"2000-04-03T00:00:00.00Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti"]
+            }
+          },
+          "response": [
+            {
+              "name": "Add Compito 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"materia\" : \"MATEMATICA\",\r\n    \"data\" : \"2000-04-03T00:00:00.00Z\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/compiti/2"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:03:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "2"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compito.created"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"data\": \"2000-04-03T00:00:00Z\",\n    \"materia\": \"MATEMATICA\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CompitiSvolti",
+      "item": [
+        {
+          "name": "Get Compiti Svolti",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti"]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compiti Svolti 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:03:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"voto\": 9,\n        \"note\": \"Note aggiornate\",\n        \"alunno\": {\n            \"id\": 4,\n            \"nome\": \"Alunno2\",\n            \"cognome\": \"AlunnoCognome2\",\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\n            \"classe\": {\n                \"id\": 26,\n                \"sezione\": \"A\",\n                \"anno\": 6\n            }\n        },\n        \"compito\": {\n            \"id\": 1,\n            \"data\": \"2000-02-03T00:00:00Z\",\n            \"materia\": \"MATEMATICA\"\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Compiti Svolti By Alunno",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/alunno/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", "alunno", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "alunnoId",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compiti Svolti By Alunno",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/alunno/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", "alunno", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "alunnoId",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:04:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 3,\n        \"voto\": 9.5,\n        \"note\": \"Note per il compito svolto 2-3\",\n        \"alunno\": {\n            \"id\": 6,\n            \"nome\": \"Alunno10\",\n            \"cognome\": \"AlunnoCognome10\",\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\n            \"classe\": {\n                \"id\": 1,\n                \"sezione\": \"A\",\n                \"anno\": 1\n            }\n        },\n        \"compito\": {\n            \"id\": 1,\n            \"data\": \"2000-02-03T00:00:00Z\",\n            \"materia\": \"MATEMATICA\"\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Compiti Svolti By Compito",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/compito/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", "compito", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compiti Svolti By Compito",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/compito/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", "compito", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:04:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"voto\": 9,\n        \"note\": \"Note aggiornate\",\n        \"alunno\": {\n            \"id\": 4,\n            \"nome\": \"Alunno2\",\n            \"cognome\": \"AlunnoCognome2\",\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\n            \"classe\": {\n                \"id\": 26,\n                \"sezione\": \"A\",\n                \"anno\": 6\n            }\n        },\n        \"compito\": {\n            \"id\": 1,\n            \"data\": \"2000-02-03T00:00:00Z\",\n            \"materia\": \"MATEMATICA\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"voto\": 9.5,\n        \"note\": \"Note per il compito svolto 2-3\",\n        \"alunno\": {\n            \"id\": 5,\n            \"nome\": \"Alunno1\",\n            \"cognome\": \"AlunnoCognome1\",\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\n            \"classe\": {\n                \"id\": 26,\n                \"sezione\": \"A\",\n                \"anno\": 6\n            }\n        },\n        \"compito\": {\n            \"id\": 1,\n            \"data\": \"2000-02-03T00:00:00Z\",\n            \"materia\": \"MATEMATICA\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"voto\": 9.5,\n        \"note\": \"Note per il compito svolto 2-3\",\n        \"alunno\": {\n            \"id\": 6,\n            \"nome\": \"Alunno10\",\n            \"cognome\": \"AlunnoCognome10\",\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\n            \"classe\": {\n                \"id\": 1,\n                \"sezione\": \"A\",\n                \"anno\": 1\n            }\n        },\n        \"compito\": {\n            \"id\": 1,\n            \"data\": \"2000-02-03T00:00:00Z\",\n            \"materia\": \"MATEMATICA\"\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Compito Svolto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Compito Svolto",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:04:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 3,\n    \"voto\": 9.5,\n    \"note\": \"Note per il compito svolto 2-3\",\n    \"alunno\": {\n        \"id\": 6,\n        \"nome\": \"Alunno10\",\n        \"cognome\": \"AlunnoCognome10\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 1,\n            \"sezione\": \"A\",\n            \"anno\": 1\n        }\n    },\n    \"compito\": {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Compito Svolto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 4,\r\n    \"voto\": 4.5,\r\n    \"note\": \"Note per il compito svolto 2-3\",\r\n    \"alunno\": {\r\n        \"id\": 6,\r\n        \"nome\": \"Alunno10\",\r\n        \"cognome\": \"AlunnoCognome10\",\r\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\r\n        \"classe\": {\r\n            \"id\": 1,\r\n            \"sezione\": \"A\",\r\n            \"anno\": 1\r\n        }\r\n    },\r\n    \"compito\": {\r\n        \"id\": 1,\r\n        \"data\": \"2000-02-03T00:00:00Z\",\r\n        \"materia\": \"MATEMATICA\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Compito Svolto",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"id\": 1,\r\n        \"voto\": 10.0,\r\n        \"note\": \"Note aggiornate\",\r\n        \"alunno\": {\r\n            \"id\": 4,\r\n            \"nome\": \"Alunno2\",\r\n            \"cognome\": \"AlunnoCognome2\",\r\n            \"dataNascita\": \"2000-02-03T00:00:00Z\",\r\n            \"classe\": {\r\n                \"id\": 26,\r\n                \"sezione\": \"A\",\r\n                \"anno\": 6\r\n            }\r\n        },\r\n        \"compito\": {\r\n            \"id\": 1,\r\n            \"data\": \"2000-02-03T00:00:00Z\",\r\n            \"materia\": \"MATEMATICA\"\r\n        }\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:05:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "1"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compitoSvolto.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"voto\": 10,\n    \"note\": \"Note aggiornate\",\n    \"alunno\": {\n        \"id\": 4,\n        \"nome\": \"Alunno2\",\n        \"cognome\": \"AlunnoCognome2\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 26,\n            \"sezione\": \"A\",\n            \"anno\": 6\n        }\n    },\n    \"compito\": {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n}"
+            },
+            {
+              "name": "Update Compito Svolto",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 4,\r\n    \"voto\": 4.5,\r\n    \"note\": \"Note per il compito svolto 2-3\",\r\n    \"alunno\": {\r\n        \"id\": 6,\r\n        \"nome\": \"Alunno10\",\r\n        \"cognome\": \"AlunnoCognome10\",\r\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\r\n        \"classe\": {\r\n            \"id\": 1,\r\n            \"sezione\": \"A\",\r\n            \"anno\": 1\r\n        }\r\n    },\r\n    \"compito\": {\r\n        \"id\": 1,\r\n        \"data\": \"2000-02-03T00:00:00Z\",\r\n        \"materia\": \"MATEMATICA\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:05:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "4"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compitoSvolto.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"voto\": 4.5,\n    \"note\": \"Note per il compito svolto 2-3\",\n    \"alunno\": {\n        \"id\": 6,\n        \"nome\": \"Alunno10\",\n        \"cognome\": \"AlunnoCognome10\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 1,\n            \"sezione\": \"A\",\n            \"anno\": 1\n        }\n    },\n    \"compito\": {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Partial Update Compito Svolto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 4,\r\n    \"voto\": 7,\r\n    \"note\": \"Note aggiornate\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/:compitoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", ":compitoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Partial Update Compito Svolto",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": 4,\r\n    \"voto\": 7,\r\n    \"note\": \"Note aggiornate\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:compitoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":compitoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:06:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "4"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compitoSvolto.updated"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"voto\": 7,\n    \"note\": \"Note aggiornate\",\n    \"alunno\": {\n        \"id\": 6,\n        \"nome\": \"Alunno10\",\n        \"cognome\": \"AlunnoCognome10\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 1,\n            \"sezione\": \"A\",\n            \"anno\": 1\n        }\n    },\n    \"compito\": {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Compito Svolto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Compito Svolto 204",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"anno\" : 1,\r\n    \"sezione\" : \"F\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:05:06 GMT"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "3"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compitoSvolto.deleted"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Add Compito Svolto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"voto\" : 9.5,\r\n    \"note\" : \"Note per il compito svolto 2-3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compiti-svolti/:compitoId/:alunnoId",
+              "host": ["{{baseUrl}}"],
+              "path": ["compiti-svolti", ":compitoId", ":alunnoId"],
+              "variable": [
+                {
+                  "key": "compitoId",
+                  "value": "1"
+                },
+                {
+                  "key": "alunnoId",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Add Compito Svolto 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"voto\" : 9.5,\r\n    \"note\" : \"Note per il compito svolto 2-3\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:compitoId/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":compitoId", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "1"
+                    },
+                    {
+                      "key": "alunnoId",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/compiti-svolti/3"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:03:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "3"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-elementarySchoolApp-alert",
+                  "value": "elementarySchoolApp.compitoSvolto.created"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 3,\n    \"voto\": 9.5,\n    \"note\": \"Note per il compito svolto 2-3\",\n    \"alunno\": {\n        \"id\": 6,\n        \"nome\": \"Alunno10\",\n        \"cognome\": \"AlunnoCognome10\",\n        \"dataNascita\": \"2000-02-03T00:00:00Z\",\n        \"classe\": {\n            \"id\": 1,\n            \"sezione\": \"A\",\n            \"anno\": 1\n        }\n    },\n    \"compito\": {\n        \"id\": 1,\n        \"data\": \"2000-02-03T00:00:00Z\",\n        \"materia\": \"MATEMATICA\"\n    }\n}"
+            },
+            {
+              "name": "Add Compito Svolto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"voto\" : 9.5,\r\n    \"note\" : \"Note per il compito svolto 2-3\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/compiti-svolti/:compitoId/:alunnoId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["compiti-svolti", ":compitoId", ":alunnoId"],
+                  "variable": [
+                    {
+                      "key": "compitoId",
+                      "value": "100"
+                    },
+                    {
+                      "key": "alunnoId",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 24 Nov 2022 15:04:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-elementarySchoolApp-params",
+                  "value": "compitoSvolto"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                },
+                {
+                  "key": "X-elementarySchoolApp-error",
+                  "value": "error.alunnoCompitoExist"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"entityName\": \"compitoSvolto\",\n    \"errorKey\": \"alunnoCompitoExist\",\n    \"type\": \"https://www.jhipster.tech/problem/problem-with-message\",\n    \"title\": \"Selected Compito or Alunno don't exist\",\n    \"status\": 400,\n    \"message\": \"error.alunnoCompitoExist\",\n    \"params\": \"compitoSvolto\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

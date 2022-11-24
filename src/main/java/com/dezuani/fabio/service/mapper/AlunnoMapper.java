@@ -15,7 +15,5 @@ public interface AlunnoMapper extends EntityMapper<AlunnoDTO, Alunno> {
     AlunnoDTO toDto(Alunno s);
 
     @Named("classeId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
     ClasseDTO toDtoClasseId(Classe classe);
 }

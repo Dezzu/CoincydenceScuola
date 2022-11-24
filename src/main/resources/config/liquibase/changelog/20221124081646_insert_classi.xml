@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity CompitoSvolto.
+    -->
+    <changeSet id="20221124081646-2" author="jhipster">
+
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="A"/>
+            <column  name="anno"  value="1"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="B"/>
+            <column  name="anno"  value="1"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="C"/>
+            <column  name="anno"  value="1"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="D"/>
+            <column  name="anno"  value="1"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="E"/>
+            <column  name="anno"  value="1"/>
+        </insert>
+
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="A"/>
+            <column  name="anno"  value="2"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="B"/>
+            <column  name="anno"  value="2"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="C"/>
+            <column  name="anno"  value="2"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="D"/>
+            <column  name="anno"  value="2"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="E"/>
+            <column  name="anno"  value="2"/>
+        </insert>
+
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="A"/>
+            <column  name="anno"  value="3"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="B"/>
+            <column  name="anno"  value="3"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="C"/>
+            <column  name="anno"  value="3"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="D"/>
+            <column  name="anno"  value="3"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="E"/>
+            <column  name="anno"  value="3"/>
+        </insert>
+
+
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="A"/>
+            <column  name="anno"  value="4"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="B"/>
+            <column  name="anno"  value="4"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="C"/>
+            <column  name="anno"  value="4"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="D"/>
+            <column  name="anno"  value="4"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="E"/>
+            <column  name="anno"  value="4"/>
+        </insert>
+
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="A"/>
+            <column  name="anno"  value="5"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="B"/>
+            <column  name="anno"  value="5"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="C"/>
+            <column  name="anno"  value="5"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="D"/>
+            <column  name="anno"  value="5"/>
+        </insert>
+        <insert dbms="mysql"
+                schemaName="mySchool"
+                tableName="classe">
+            <column  name="sezione"  value="E"/>
+            <column  name="anno"  value="5"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

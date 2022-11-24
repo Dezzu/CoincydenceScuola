@@ -18,12 +18,8 @@ public interface CompitoSvoltoMapper extends EntityMapper<CompitoSvoltoDTO, Comp
     CompitoSvoltoDTO toDto(CompitoSvolto s);
 
     @Named("alunnoId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
     AlunnoDTO toDtoAlunnoId(Alunno alunno);
 
     @Named("compitoId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
     CompitoDTO toDtoCompitoId(Compito compito);
 }

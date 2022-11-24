@@ -1,9 +1,14 @@
 package com.dezuani.fabio.service;
 
+import static com.dezuani.fabio.config.Constants.CLASSE_ENTITY;
+import static org.hibernate.id.IdentifierGenerator.ENTITY_NAME;
+
 import com.dezuani.fabio.domain.Classe;
+import com.dezuani.fabio.repository.AlunnoRepository;
 import com.dezuani.fabio.repository.ClasseRepository;
 import com.dezuani.fabio.service.dto.ClasseDTO;
 import com.dezuani.fabio.service.mapper.ClasseMapper;
+import com.dezuani.fabio.web.rest.errors.BadRequestAlertException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -23,11 +28,13 @@ public class ClasseService {
     private final Logger log = LoggerFactory.getLogger(ClasseService.class);
 
     private final ClasseRepository classeRepository;
+    private final AlunnoRepository alunnoRepository;
 
     private final ClasseMapper classeMapper;
 
-    public ClasseService(ClasseRepository classeRepository, ClasseMapper classeMapper) {
+    public ClasseService(ClasseRepository classeRepository, AlunnoRepository alunnoRepository, ClasseMapper classeMapper) {
         this.classeRepository = classeRepository;
+        this.alunnoRepository = alunnoRepository;
         this.classeMapper = classeMapper;
     }
 
@@ -39,6 +46,9 @@ public class ClasseService {
      */
     public ClasseDTO save(ClasseDTO classeDTO) {
         log.debug("Request to save Classe : {}", classeDTO);
+        Optional<Classe> classePresent = classeRepository.findByAnnoAndSezione(classeDTO.getAnno(), classeDTO.getSezione());
+        if (classePresent.isPresent()) return null;
+
         Classe classe = classeMapper.toEntity(classeDTO);
         classe = classeRepository.save(classe);
         return classeMapper.toDto(classe);
@@ -52,6 +62,12 @@ public class ClasseService {
      */
     public ClasseDTO update(ClasseDTO classeDTO) {
         log.debug("Request to update Classe : {}", classeDTO);
+        Optional<Classe> classePresent = classeRepository.findByAnnoAndSezioneAndIdNot(
+            classeDTO.getAnno(),
+            classeDTO.getSezione(),
+            classeDTO.getId()
+        );
+        if (classePresent.isPresent()) return null;
         Classe classe = classeMapper.toEntity(classeDTO);
         classe = classeRepository.save(classe);
         return classeMapper.toDto(classe);
@@ -69,6 +85,12 @@ public class ClasseService {
         return classeRepository
             .findById(classeDTO.getId())
             .map(existingClasse -> {
+                Optional<Classe> classePresent = classeRepository.findByAnnoAndSezioneAndIdNot(
+                    classeDTO.getAnno() == null ? existingClasse.getAnno() : classeDTO.getAnno(),
+                    classeDTO.getSezione() == null ? existingClasse.getSezione() : classeDTO.getSezione(),
+                    classeDTO.getId()
+                );
+                if (classePresent.isPresent()) return null;
                 classeMapper.partialUpdate(existingClasse, classeDTO);
 
                 return existingClasse;
@@ -95,18 +117,22 @@ public class ClasseService {
      * @return the entity.
      */
     @Transactional(readOnly = true)
-    public Optional<ClasseDTO> findOne(Long id) {
+    public Optional<ClasseDTO> findOne(Long id, Integer anno, String sezione) {
         log.debug("Request to get Classe : {}", id);
+        if (anno != null && sezione != null) {
+            return classeRepository.findByAnnoAndSezione(anno, sezione).map(classeMapper::toDto);
+        }
         return classeRepository.findById(id).map(classeMapper::toDto);
     }
 
     /**
      * Delete the classe by id.
      *
-     * @param id the id of the entity.
+     * @param anno the anno of the entity.
+     * @param sezione the sezione of the entity.
      */
-    public void delete(Long id) {
-        log.debug("Request to delete Classe : {}", id);
-        classeRepository.deleteById(id);
+    public void delete(Integer anno, String sezione) {
+        log.debug("Request to delete Classe : {} - {}", anno, sezione);
+        classeRepository.deleteByAnnoAndSezione(anno, sezione);
     }
 }

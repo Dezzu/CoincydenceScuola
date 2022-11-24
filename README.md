@@ -1,152 +1,30 @@
-# ElementarySchool
+# ElementarySchool for Coincydence
 
-This application was generated using JHipster 7.9.3, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.3](https://www.jhipster.tech/documentation-archive/v7.9.3).
+Applicazione per la gestione di una scuola elementare per progetto Coincydence
 
-## Project Structure
+## Struttura del progetto
 
-Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
+Il progetto è stato creato con l'utilizzo del tool `JHipster` e in particolare del tool `JDL Studio`.
+Il file jdl della struttura si può trovare nella struttura del progetto denominato `jdl-structure.jdl`.
 
-In the project root, JHipster generates configuration files for tools like git, prettier, eslint, husky, and others that are well known and you can find references in the web.
+### Scelte strutturali
 
-`/src/*` structure follows default Java structure.
+La cancellazione dei record non è stata permessa se quest'ultimi hanno dei record collegati. E' stato considerato
+l'inserimento di una data per la gestione annuale della scuola ma è stata ritenuta eccessiva per l'entità dell'esercizio.
 
-- `.yo-rc.json` - Yeoman configuration file
-  JHipster configuration is stored in this file at `generator-jhipster` key. You may find `generator-jhipster-*` for specific blueprints configuration.
-- `.yo-resolve` (optional) - Yeoman conflict resolver
-  Allows to use a specific action when conflicts are found skipping prompts for files that matches a pattern. Each line should match `[pattern] [action]` with pattern been a [Minimatch](https://github.com/isaacs/minimatch#minimatch) pattern and action been one of skip (default if ommited) or force. Lines starting with `#` are considered comments and are ignored.
-- `.jhipster/*.json` - JHipster entity configuration files
-- `/src/main/docker` - Docker configurations for the application and services that the application depends on
+## Setup ambiente
 
-## Development
-
-To start your application in the dev profile, run:
-
-```
-./mvnw
-```
-
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-### JHipster Control Center
-
-JHipster Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
-
-```
-docker-compose -f src/main/docker/jhipster-control-center.yml up
-```
-
-## Building for production
-
-### Packaging as jar
-
-To build the final jar and optimize the ElementarySchool application for production, run:
-
-```
-./mvnw -Pprod clean verify
-```
-
-To ensure everything worked, run:
-
-```
-java -jar target/*.jar
-```
-
-Refer to [Using JHipster in production][] for more details.
-
-### Packaging as war
-
-To package your application as a war in order to deploy it to an application server, run:
-
-```
-./mvnw -Pprod,war clean verify
-```
-
-## Testing
-
-To launch your application's tests, run:
-
-```
-./mvnw verify
-```
-
-For more information, refer to the [Running tests page][].
-
-### Code quality
-
-Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
-
-```
-docker-compose -f src/main/docker/sonar.yml up -d
-```
-
-Note: we have turned off authentication in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
-
-You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
-
-Then, run a Sonar analysis:
-
-```
-./mvnw -Pprod clean verify sonar:sonar
-```
-
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
-
-```
-./mvnw initialize sonar:sonar
-```
-
-For more information, refer to the [Code quality page][].
-
-## Using Docker to simplify development (optional)
-
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
-
-For example, to start a mysql database in a docker container, run:
+Prima di procedere con il test delle API è necessario creare il container per il database che può essere fatto con il comando:
 
 ```
 docker-compose -f src/main/docker/mysql.yml up -d
 ```
 
-To stop it and remove the container, run:
+## Test delle API
 
-```
-docker-compose -f src/main/docker/mysql.yml down
-```
+Nella struttura del progetto è disponibile la collection di postman dove sono presenti tutte le API da utilizzare con un'esempio di richiesta e risposta in modo da semplificare l'inserimento dei dati.
+Una volta avviata l'applicazione senza profili (dev viene abilitato di default) i changeset del database verranno eseguiti, insieme alle 25 classi aggiunte.
+L'utente da utilizzare per il test dell'applicazione è quello di default identificato come `user` e `user` oppure possono essere registrati
+nuovi utenti tramite l'API di registrazione che crea utenti già verificati.
 
-You can also fully dockerize your application and all the services that it depends on.
-To achieve this, first build a docker image of your app by running:
-
-```
-npm run java:docker
-```
-
-Or build a arm64 docker image when using an arm64 processor os like MacOS with M1 processor family running:
-
-```
-npm run java:docker:arm64
-```
-
-Then run:
-
-```
-docker-compose -f src/main/docker/app.yml up -d
-```
-
-When running Docker Desktop on MacOS Big Sur or later, consider enabling experimental `Use the new Virtualization framework` for better processing performance ([disk access performance is worse](https://github.com/docker/roadmap/issues/7)).
-
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
-
-## Continuous Integration (optional)
-
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
-
-[jhipster homepage and latest documentation]: https://www.jhipster.tech
-[jhipster 7.9.3 archive]: https://www.jhipster.tech/documentation-archive/v7.9.3
-[using jhipster in development]: https://www.jhipster.tech/documentation-archive/v7.9.3/development/
-[using docker and docker-compose]: https://www.jhipster.tech/documentation-archive/v7.9.3/docker-compose
-[using jhipster in production]: https://www.jhipster.tech/documentation-archive/v7.9.3/production/
-[running tests page]: https://www.jhipster.tech/documentation-archive/v7.9.3/running-tests/
-[code quality page]: https://www.jhipster.tech/documentation-archive/v7.9.3/code-quality/
-[setting up continuous integration]: https://www.jhipster.tech/documentation-archive/v7.9.3/setting-up-ci/
-[node.js]: https://nodejs.org/
-[npm]: https://www.npmjs.com/
+Le API sotto il path `/api/public/**` sono API pubbliche quindi non necessitano dell'autenticazione.

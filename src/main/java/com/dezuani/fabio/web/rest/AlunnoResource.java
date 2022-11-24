@@ -1,5 +1,7 @@
 package com.dezuani.fabio.web.rest;
 
+import static com.dezuani.fabio.config.Constants.ALUNNO_ENTITY;
+
 import com.dezuani.fabio.repository.AlunnoRepository;
 import com.dezuani.fabio.service.AlunnoService;
 import com.dezuani.fabio.service.dto.AlunnoDTO;
@@ -43,27 +45,29 @@ public class AlunnoResource {
     }
 
     /**
-     * {@code POST  /alunnos} : Create a new alunno.
+     * {@code POST  /alunni} : Create a new alunno.
      *
      * @param alunnoDTO the alunnoDTO to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new alunnoDTO, or with status {@code 400 (Bad Request)} if the alunno has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/alunnos")
+    @PostMapping("/alunni")
     public ResponseEntity<AlunnoDTO> createAlunno(@Valid @RequestBody AlunnoDTO alunnoDTO) throws URISyntaxException {
         log.debug("REST request to save Alunno : {}", alunnoDTO);
         if (alunnoDTO.getId() != null) {
             throw new BadRequestAlertException("A new alunno cannot already have an ID", ENTITY_NAME, "idexists");
         }
         AlunnoDTO result = alunnoService.save(alunnoDTO);
+        if (result == null) throw new BadRequestAlertException("Selected class doesn't exist", ENTITY_NAME, "idexists");
+
         return ResponseEntity
-            .created(new URI("/api/alunnos/" + result.getId()))
+            .created(new URI("/api/alunni/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /alunnos/:id} : Updates an existing alunno.
+     * {@code PUT  /alunni/:id} : Updates an existing alunno.
      *
      * @param id the id of the alunnoDTO to save.
      * @param alunnoDTO the alunnoDTO to update.
@@ -72,7 +76,7 @@ public class AlunnoResource {
      * or with status {@code 500 (Internal Server Error)} if the alunnoDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/alunnos/{id}")
+    @PutMapping("/alunni/{id}")
     public ResponseEntity<AlunnoDTO> updateAlunno(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody AlunnoDTO alunnoDTO
@@ -90,6 +94,7 @@ public class AlunnoResource {
         }
 
         AlunnoDTO result = alunnoService.update(alunnoDTO);
+        if (result == null) throw new BadRequestAlertException("Selected class doesn't exist", ENTITY_NAME, "idexists");
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, alunnoDTO.getId().toString()))
@@ -97,7 +102,7 @@ public class AlunnoResource {
     }
 
     /**
-     * {@code PATCH  /alunnos/:id} : Partial updates given fields of an existing alunno, field will ignore if it is null
+     * {@code PATCH  /alunni/:id} : Partial updates given fields of an existing alunno, field will ignore if it is null
      *
      * @param id the id of the alunnoDTO to save.
      * @param alunnoDTO the alunnoDTO to update.
@@ -107,7 +112,7 @@ public class AlunnoResource {
      * or with status {@code 500 (Internal Server Error)} if the alunnoDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/alunnos/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PatchMapping(value = "/alunni/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<AlunnoDTO> partialUpdateAlunno(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody AlunnoDTO alunnoDTO
@@ -126,6 +131,8 @@ public class AlunnoResource {
 
         Optional<AlunnoDTO> result = alunnoService.partialUpdate(alunnoDTO);
 
+        if (result.isEmpty()) throw new BadRequestAlertException("Selected class doesn't exist", ENTITY_NAME, "idexists");
+
         return ResponseUtil.wrapOrNotFound(
             result,
             HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, alunnoDTO.getId().toString())
@@ -133,23 +140,23 @@ public class AlunnoResource {
     }
 
     /**
-     * {@code GET  /alunnos} : get all the alunnos.
+     * {@code GET  /alunni} : get all the alunni.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of alunnos in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of alunni in body.
      */
-    @GetMapping("/alunnos")
+    @GetMapping("/alunni")
     public List<AlunnoDTO> getAllAlunnos() {
         log.debug("REST request to get all Alunnos");
         return alunnoService.findAll();
     }
 
     /**
-     * {@code GET  /alunnos/:id} : get the "id" alunno.
+     * {@code GET  /alunni/:id} : get the "id" alunno.
      *
      * @param id the id of the alunnoDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the alunnoDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/alunnos/{id}")
+    @GetMapping("/alunni/{id}")
     public ResponseEntity<AlunnoDTO> getAlunno(@PathVariable Long id) {
         log.debug("REST request to get Alunno : {}", id);
         Optional<AlunnoDTO> alunnoDTO = alunnoService.findOne(id);
@@ -157,15 +164,32 @@ public class AlunnoResource {
     }
 
     /**
-     * {@code DELETE  /alunnos/:id} : delete the "id" alunno.
+     * {@code GET  /alunni/classe/:anno/:sezione} : get the "anno" and "sezione" alunni.
+     *
+     * @param anno the classe year of the List<alunnoDTO> to retrieve.
+     * @param sezione the classe section of the List<alunnoDTO> to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the alunnoDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/alunni/classe/{anno}/{sezione}")
+    public List<AlunnoDTO> getAlunniByClasse(@PathVariable Integer anno, @PathVariable String sezione) {
+        log.debug("REST request to get Alunno : {} - {}", anno, sezione);
+        return alunnoService.findByClasse(anno, sezione);
+    }
+
+    /**
+     * {@code DELETE  /alunni/:id} : delete the "id" alunno.
      *
      * @param id the id of the alunnoDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/alunnos/{id}")
+    @DeleteMapping("/alunni/{id}")
     public ResponseEntity<Void> deleteAlunno(@PathVariable Long id) {
         log.debug("REST request to delete Alunno : {}", id);
-        alunnoService.delete(id);
+        try {
+            alunnoService.delete(id);
+        } catch (Exception e) {
+            throw new BadRequestAlertException("Compiti done for this alunno", ALUNNO_ENTITY, "compitiSvoltiExists");
+        }
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

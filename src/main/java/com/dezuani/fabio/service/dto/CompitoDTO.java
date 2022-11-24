@@ -4,6 +4,7 @@ import com.dezuani.fabio.domain.enumeration.Materia;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import javax.validation.constraints.NotNull;
 
 /**
  * A DTO for the {@link com.dezuani.fabio.domain.Compito} entity.
@@ -13,8 +14,10 @@ public class CompitoDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private Instant data;
 
+    @NotNull
     private Materia materia;
 
     public Long getId() {

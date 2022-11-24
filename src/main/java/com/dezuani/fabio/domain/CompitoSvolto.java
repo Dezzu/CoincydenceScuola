@@ -29,11 +29,11 @@ public class CompitoSvolto implements Serializable {
     private String note;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "classe", "compitos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "classe", "compiti" }, allowSetters = true)
     private Alunno alunno;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "alunnos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "alunni" }, allowSetters = true)
     private Compito compito;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

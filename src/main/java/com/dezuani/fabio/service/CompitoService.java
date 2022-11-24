@@ -1,9 +1,14 @@
 package com.dezuani.fabio.service;
 
+import static com.dezuani.fabio.config.Constants.CLASSE_ENTITY;
+import static com.dezuani.fabio.config.Constants.COMPITO_ENTITY;
+
 import com.dezuani.fabio.domain.Compito;
 import com.dezuani.fabio.repository.CompitoRepository;
+import com.dezuani.fabio.repository.CompitoSvoltoRepository;
 import com.dezuani.fabio.service.dto.CompitoDTO;
 import com.dezuani.fabio.service.mapper.CompitoMapper;
+import com.dezuani.fabio.web.rest.errors.BadRequestAlertException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -23,11 +28,17 @@ public class CompitoService {
     private final Logger log = LoggerFactory.getLogger(CompitoService.class);
 
     private final CompitoRepository compitoRepository;
+    private final CompitoSvoltoRepository compitoSvoltoRepository;
 
     private final CompitoMapper compitoMapper;
 
-    public CompitoService(CompitoRepository compitoRepository, CompitoMapper compitoMapper) {
+    public CompitoService(
+        CompitoRepository compitoRepository,
+        CompitoSvoltoRepository compitoSvoltoRepository,
+        CompitoMapper compitoMapper
+    ) {
         this.compitoRepository = compitoRepository;
+        this.compitoSvoltoRepository = compitoSvoltoRepository;
         this.compitoMapper = compitoMapper;
     }
 

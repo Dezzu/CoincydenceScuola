@@ -8,7 +8,7 @@ services:
     #   - ~/volumes/jhipster/ElementarySchool/mysql/:/var/lib/mysql/
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=elementaryschool
+      - MYSQL_DATABASE=mySchool
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:

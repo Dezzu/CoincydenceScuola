@@ -1,0 +1,51 @@
+
+application {
+  config {
+    baseName ElementarySchool,
+    applicationType monolith,
+    packageName com.dezuani.fabio,
+    clientFramework no,
+    authenticationType jwt,
+    devDatabaseType mysql,
+    prodDatabaseType mysql,
+  }
+  entities *
+}
+
+entity Alunno {
+	matricola Long,
+	nome String required,
+    cognome String required,
+    dataNascita Instant required,
+}
+
+entity Classe {
+	sezione String,
+    anno Integer,
+}
+
+entity Compito {
+	data Instant,
+    materia Materia
+}
+
+entity CompitoSvolto {
+	voto Double,
+    note String,
+}
+
+enum Materia {
+	STORIA, ITALIANO, INGLESE, MATEMATICA
+}
+
+dto * with mapstruct
+
+relationship OneToMany {
+  Classe to Alunno
+}
+
+relationship ManyToOne {
+	CompitoSvolto{alunno} to Alunno{compito},
+    CompitoSvolto{compito} to Compito{alunno}
+}
+    

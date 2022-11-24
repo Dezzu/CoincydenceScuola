@@ -36,7 +36,7 @@ public class Compito implements Serializable {
     @OneToMany(mappedBy = "compito")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "alunno", "compito" }, allowSetters = true)
-    private Set<CompitoSvolto> alunnos = new HashSet<>();
+    private Set<CompitoSvolto> alunni = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -79,33 +79,33 @@ public class Compito implements Serializable {
         this.materia = materia;
     }
 
-    public Set<CompitoSvolto> getAlunnos() {
-        return this.alunnos;
+    public Set<CompitoSvolto> getAlunni() {
+        return this.alunni;
     }
 
-    public void setAlunnos(Set<CompitoSvolto> compitoSvoltos) {
-        if (this.alunnos != null) {
-            this.alunnos.forEach(i -> i.setCompito(null));
+    public void setAlunni(Set<CompitoSvolto> compitoSvoltos) {
+        if (this.alunni != null) {
+            this.alunni.forEach(i -> i.setCompito(null));
         }
         if (compitoSvoltos != null) {
             compitoSvoltos.forEach(i -> i.setCompito(this));
         }
-        this.alunnos = compitoSvoltos;
+        this.alunni = compitoSvoltos;
     }
 
     public Compito alunnos(Set<CompitoSvolto> compitoSvoltos) {
-        this.setAlunnos(compitoSvoltos);
+        this.setAlunni(compitoSvoltos);
         return this;
     }
 
     public Compito addAlunno(CompitoSvolto compitoSvolto) {
-        this.alunnos.add(compitoSvolto);
+        this.alunni.add(compitoSvolto);
         compitoSvolto.setCompito(this);
         return this;
     }
 
     public Compito removeAlunno(CompitoSvolto compitoSvolto) {
-        this.alunnos.remove(compitoSvolto);
+        this.alunni.remove(compitoSvolto);
         compitoSvolto.setCompito(null);
         return this;
     }

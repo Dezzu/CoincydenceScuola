@@ -33,9 +33,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AlunnoResourceIT {
 
-    private static final Long DEFAULT_MATRICOLA = 1L;
-    private static final Long UPDATED_MATRICOLA = 2L;
-
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
@@ -72,11 +69,7 @@ class AlunnoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Alunno createEntity(EntityManager em) {
-        Alunno alunno = new Alunno()
-            .matricola(DEFAULT_MATRICOLA)
-            .nome(DEFAULT_NOME)
-            .cognome(DEFAULT_COGNOME)
-            .dataNascita(DEFAULT_DATA_NASCITA);
+        Alunno alunno = new Alunno().nome(DEFAULT_NOME).cognome(DEFAULT_COGNOME).dataNascita(DEFAULT_DATA_NASCITA);
         return alunno;
     }
 
@@ -87,11 +80,7 @@ class AlunnoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Alunno createUpdatedEntity(EntityManager em) {
-        Alunno alunno = new Alunno()
-            .matricola(UPDATED_MATRICOLA)
-            .nome(UPDATED_NOME)
-            .cognome(UPDATED_COGNOME)
-            .dataNascita(UPDATED_DATA_NASCITA);
+        Alunno alunno = new Alunno().nome(UPDATED_NOME).cognome(UPDATED_COGNOME).dataNascita(UPDATED_DATA_NASCITA);
         return alunno;
     }
 
@@ -114,7 +103,6 @@ class AlunnoResourceIT {
         List<Alunno> alunnoList = alunnoRepository.findAll();
         assertThat(alunnoList).hasSize(databaseSizeBeforeCreate + 1);
         Alunno testAlunno = alunnoList.get(alunnoList.size() - 1);
-        assertThat(testAlunno.getMatricola()).isEqualTo(DEFAULT_MATRICOLA);
         assertThat(testAlunno.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testAlunno.getCognome()).isEqualTo(DEFAULT_COGNOME);
         assertThat(testAlunno.getDataNascita()).isEqualTo(DEFAULT_DATA_NASCITA);
@@ -205,7 +193,6 @@ class AlunnoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(alunno.getId().intValue())))
-            .andExpect(jsonPath("$.[*].matricola").value(hasItem(DEFAULT_MATRICOLA.intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].cognome").value(hasItem(DEFAULT_COGNOME)))
             .andExpect(jsonPath("$.[*].dataNascita").value(hasItem(DEFAULT_DATA_NASCITA.toString())));
@@ -223,7 +210,6 @@ class AlunnoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(alunno.getId().intValue()))
-            .andExpect(jsonPath("$.matricola").value(DEFAULT_MATRICOLA.intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.cognome").value(DEFAULT_COGNOME))
             .andExpect(jsonPath("$.dataNascita").value(DEFAULT_DATA_NASCITA.toString()));
@@ -248,7 +234,7 @@ class AlunnoResourceIT {
         Alunno updatedAlunno = alunnoRepository.findById(alunno.getId()).get();
         // Disconnect from session so that the updates on updatedAlunno are not directly saved in db
         em.detach(updatedAlunno);
-        updatedAlunno.matricola(UPDATED_MATRICOLA).nome(UPDATED_NOME).cognome(UPDATED_COGNOME).dataNascita(UPDATED_DATA_NASCITA);
+        updatedAlunno.nome(UPDATED_NOME).cognome(UPDATED_COGNOME).dataNascita(UPDATED_DATA_NASCITA);
         AlunnoDTO alunnoDTO = alunnoMapper.toDto(updatedAlunno);
 
         restAlunnoMockMvc
@@ -263,7 +249,6 @@ class AlunnoResourceIT {
         List<Alunno> alunnoList = alunnoRepository.findAll();
         assertThat(alunnoList).hasSize(databaseSizeBeforeUpdate);
         Alunno testAlunno = alunnoList.get(alunnoList.size() - 1);
-        assertThat(testAlunno.getMatricola()).isEqualTo(UPDATED_MATRICOLA);
         assertThat(testAlunno.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testAlunno.getCognome()).isEqualTo(UPDATED_COGNOME);
         assertThat(testAlunno.getDataNascita()).isEqualTo(UPDATED_DATA_NASCITA);
@@ -360,7 +345,6 @@ class AlunnoResourceIT {
         List<Alunno> alunnoList = alunnoRepository.findAll();
         assertThat(alunnoList).hasSize(databaseSizeBeforeUpdate);
         Alunno testAlunno = alunnoList.get(alunnoList.size() - 1);
-        assertThat(testAlunno.getMatricola()).isEqualTo(DEFAULT_MATRICOLA);
         assertThat(testAlunno.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testAlunno.getCognome()).isEqualTo(UPDATED_COGNOME);
         assertThat(testAlunno.getDataNascita()).isEqualTo(UPDATED_DATA_NASCITA);
@@ -378,7 +362,7 @@ class AlunnoResourceIT {
         Alunno partialUpdatedAlunno = new Alunno();
         partialUpdatedAlunno.setId(alunno.getId());
 
-        partialUpdatedAlunno.matricola(UPDATED_MATRICOLA).nome(UPDATED_NOME).cognome(UPDATED_COGNOME).dataNascita(UPDATED_DATA_NASCITA);
+        partialUpdatedAlunno.nome(UPDATED_NOME).cognome(UPDATED_COGNOME).dataNascita(UPDATED_DATA_NASCITA);
 
         restAlunnoMockMvc
             .perform(
@@ -392,7 +376,6 @@ class AlunnoResourceIT {
         List<Alunno> alunnoList = alunnoRepository.findAll();
         assertThat(alunnoList).hasSize(databaseSizeBeforeUpdate);
         Alunno testAlunno = alunnoList.get(alunnoList.size() - 1);
-        assertThat(testAlunno.getMatricola()).isEqualTo(UPDATED_MATRICOLA);
         assertThat(testAlunno.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testAlunno.getCognome()).isEqualTo(UPDATED_COGNOME);
         assertThat(testAlunno.getDataNascita()).isEqualTo(UPDATED_DATA_NASCITA);

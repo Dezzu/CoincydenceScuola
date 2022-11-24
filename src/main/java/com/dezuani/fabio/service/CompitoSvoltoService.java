@@ -1,6 +1,10 @@
 package com.dezuani.fabio.service;
 
+import com.dezuani.fabio.domain.Alunno;
+import com.dezuani.fabio.domain.Compito;
 import com.dezuani.fabio.domain.CompitoSvolto;
+import com.dezuani.fabio.repository.AlunnoRepository;
+import com.dezuani.fabio.repository.CompitoRepository;
 import com.dezuani.fabio.repository.CompitoSvoltoRepository;
 import com.dezuani.fabio.service.dto.CompitoSvoltoDTO;
 import com.dezuani.fabio.service.mapper.CompitoSvoltoMapper;
@@ -23,11 +27,20 @@ public class CompitoSvoltoService {
     private final Logger log = LoggerFactory.getLogger(CompitoSvoltoService.class);
 
     private final CompitoSvoltoRepository compitoSvoltoRepository;
+    private final AlunnoRepository alunnoRepository;
+    private final CompitoRepository compitoRepository;
 
     private final CompitoSvoltoMapper compitoSvoltoMapper;
 
-    public CompitoSvoltoService(CompitoSvoltoRepository compitoSvoltoRepository, CompitoSvoltoMapper compitoSvoltoMapper) {
+    public CompitoSvoltoService(
+        CompitoSvoltoRepository compitoSvoltoRepository,
+        AlunnoRepository alunnoRepository,
+        CompitoRepository compitoRepository,
+        CompitoSvoltoMapper compitoSvoltoMapper
+    ) {
         this.compitoSvoltoRepository = compitoSvoltoRepository;
+        this.alunnoRepository = alunnoRepository;
+        this.compitoRepository = compitoRepository;
         this.compitoSvoltoMapper = compitoSvoltoMapper;
     }
 
@@ -35,11 +48,18 @@ public class CompitoSvoltoService {
      * Save a compitoSvolto.
      *
      * @param compitoSvoltoDTO the entity to save.
+     * @param compitoId the compito id.
+     * @param alunnoId the alluno id.
      * @return the persisted entity.
      */
-    public CompitoSvoltoDTO save(CompitoSvoltoDTO compitoSvoltoDTO) {
+    public CompitoSvoltoDTO save(CompitoSvoltoDTO compitoSvoltoDTO, Long compitoId, Long alunnoId) {
         log.debug("Request to save CompitoSvolto : {}", compitoSvoltoDTO);
+        Compito compito = compitoRepository.findById(compitoId).orElse(null);
+        Alunno alunno = alunnoRepository.findById(alunnoId).orElse(null);
+        if (compito == null || alunno == null) return null;
         CompitoSvolto compitoSvolto = compitoSvoltoMapper.toEntity(compitoSvoltoDTO);
+        compitoSvolto.setCompito(compito);
+        compitoSvolto.setAlunno(alunno);
         compitoSvolto = compitoSvoltoRepository.save(compitoSvolto);
         return compitoSvoltoMapper.toDto(compitoSvolto);
     }
@@ -86,6 +106,31 @@ public class CompitoSvoltoService {
     public List<CompitoSvoltoDTO> findAll() {
         log.debug("Request to get all CompitoSvoltos");
         return compitoSvoltoRepository.findAll().stream().map(compitoSvoltoMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     * Get list of compitoSvoltos by alunnoId.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<CompitoSvoltoDTO> findAllCompitiByAlunno(Long alunnoId) {
+        log.debug("Request to get list of compiti");
+        return compitoSvoltoRepository
+            .findAllByAlunnoId(alunnoId)
+            .stream()
+            .map(compitoSvoltoMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Transactional(readOnly = true)
+    public List<CompitoSvoltoDTO> findAllCompitiByCompito(Long compitoId) {
+        log.debug("Request to get list of compiti");
+        return compitoSvoltoRepository
+            .findAllByCompitoId(compitoId)
+            .stream()
+            .map(compitoSvoltoMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

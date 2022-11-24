@@ -26,9 +26,6 @@ public class Alunno implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "matricola")
-    private Long matricola;
-
     @NotNull
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -42,13 +39,13 @@ public class Alunno implements Serializable {
     private Instant dataNascita;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "alunnos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "alunni" }, allowSetters = true)
     private Classe classe;
 
     @OneToMany(mappedBy = "alunno")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "alunno", "compito" }, allowSetters = true)
-    private Set<CompitoSvolto> compitos = new HashSet<>();
+    private Set<CompitoSvolto> compiti = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -63,19 +60,6 @@ public class Alunno implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getMatricola() {
-        return this.matricola;
-    }
-
-    public Alunno matricola(Long matricola) {
-        this.setMatricola(matricola);
-        return this;
-    }
-
-    public void setMatricola(Long matricola) {
-        this.matricola = matricola;
     }
 
     public String getNome() {
@@ -130,33 +114,33 @@ public class Alunno implements Serializable {
         return this;
     }
 
-    public Set<CompitoSvolto> getCompitos() {
-        return this.compitos;
+    public Set<CompitoSvolto> getCompiti() {
+        return this.compiti;
     }
 
-    public void setCompitos(Set<CompitoSvolto> compitoSvoltos) {
-        if (this.compitos != null) {
-            this.compitos.forEach(i -> i.setAlunno(null));
+    public void setCompiti(Set<CompitoSvolto> compitoSvoltos) {
+        if (this.compiti != null) {
+            this.compiti.forEach(i -> i.setAlunno(null));
         }
         if (compitoSvoltos != null) {
             compitoSvoltos.forEach(i -> i.setAlunno(this));
         }
-        this.compitos = compitoSvoltos;
+        this.compiti = compitoSvoltos;
     }
 
     public Alunno compitos(Set<CompitoSvolto> compitoSvoltos) {
-        this.setCompitos(compitoSvoltos);
+        this.setCompiti(compitoSvoltos);
         return this;
     }
 
     public Alunno addCompito(CompitoSvolto compitoSvolto) {
-        this.compitos.add(compitoSvolto);
+        this.compiti.add(compitoSvolto);
         compitoSvolto.setAlunno(this);
         return this;
     }
 
     public Alunno removeCompito(CompitoSvolto compitoSvolto) {
-        this.compitos.remove(compitoSvolto);
+        this.compiti.remove(compitoSvolto);
         compitoSvolto.setAlunno(null);
         return this;
     }
@@ -185,7 +169,6 @@ public class Alunno implements Serializable {
     public String toString() {
         return "Alunno{" +
             "id=" + getId() +
-            ", matricola=" + getMatricola() +
             ", nome='" + getNome() + "'" +
             ", cognome='" + getCognome() + "'" +
             ", dataNascita='" + getDataNascita() + "'" +

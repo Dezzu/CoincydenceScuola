@@ -13,8 +13,6 @@ public class AlunnoDTO implements Serializable {
 
     private Long id;
 
-    private Long matricola;
-
     @NotNull
     private String nome;
 
@@ -32,14 +30,6 @@ public class AlunnoDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getMatricola() {
-        return matricola;
-    }
-
-    public void setMatricola(Long matricola) {
-        this.matricola = matricola;
     }
 
     public String getNome() {
@@ -100,7 +90,6 @@ public class AlunnoDTO implements Serializable {
     public String toString() {
         return "AlunnoDTO{" +
             "id=" + getId() +
-            ", matricola=" + getMatricola() +
             ", nome='" + getNome() + "'" +
             ", cognome='" + getCognome() + "'" +
             ", dataNascita='" + getDataNascita() + "'" +
