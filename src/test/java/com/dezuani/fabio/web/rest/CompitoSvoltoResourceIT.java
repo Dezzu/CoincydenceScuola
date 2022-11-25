@@ -1,12 +1,19 @@
 package com.dezuani.fabio.web.rest;
 
+import static com.dezuani.fabio.web.rest.AlunnoResourceIT.*;
+import static com.dezuani.fabio.web.rest.CompitoResourceIT.DEFAULT_DATA;
+import static com.dezuani.fabio.web.rest.CompitoResourceIT.DEFAULT_MATERIA;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.dezuani.fabio.IntegrationTest;
+import com.dezuani.fabio.domain.Alunno;
+import com.dezuani.fabio.domain.Compito;
 import com.dezuani.fabio.domain.CompitoSvolto;
+import com.dezuani.fabio.repository.AlunnoRepository;
+import com.dezuani.fabio.repository.CompitoRepository;
 import com.dezuani.fabio.repository.CompitoSvoltoRepository;
 import com.dezuani.fabio.service.dto.CompitoSvoltoDTO;
 import com.dezuani.fabio.service.mapper.CompitoSvoltoMapper;
@@ -37,7 +44,8 @@ class CompitoSvoltoResourceIT {
     private static final String DEFAULT_NOTE = "AAAAAAAAAA";
     private static final String UPDATED_NOTE = "BBBBBBBBBB";
 
-    private static final String ENTITY_API_URL = "/api/compito-svoltos";
+    private static final String ENTITY_API_URL = "/api/compiti-svolti";
+    private static final String ENTITY_API_URL_ADD = "/api/compiti-svolti/{compitoId}/{alunnoId}";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();
@@ -45,6 +53,10 @@ class CompitoSvoltoResourceIT {
 
     @Autowired
     private CompitoSvoltoRepository compitoSvoltoRepository;
+    @Autowired
+    private CompitoRepository compitoRepository;
+    @Autowired
+    private AlunnoRepository alunnoRepository;
 
     @Autowired
     private CompitoSvoltoMapper compitoSvoltoMapper;
@@ -88,11 +100,17 @@ class CompitoSvoltoResourceIT {
     @Transactional
     void createCompitoSvolto() throws Exception {
         int databaseSizeBeforeCreate = compitoSvoltoRepository.findAll().size();
+        Compito compito = new Compito().data(DEFAULT_DATA).materia(DEFAULT_MATERIA);
+        compito = compitoRepository.saveAndFlush(compito);
+
+        Alunno alunno = new Alunno().nome(DEFAULT_NOME).cognome(DEFAULT_COGNOME).dataNascita(DEFAULT_DATA_NASCITA);
+        alunno = alunnoRepository.saveAndFlush(alunno);
+
         // Create the CompitoSvolto
         CompitoSvoltoDTO compitoSvoltoDTO = compitoSvoltoMapper.toDto(compitoSvolto);
         restCompitoSvoltoMockMvc
             .perform(
-                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(compitoSvoltoDTO))
+                post(ENTITY_API_URL_ADD, compito.getId(),alunno.getId()).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(compitoSvoltoDTO))
             )
             .andExpect(status().isCreated());
 
@@ -102,27 +120,6 @@ class CompitoSvoltoResourceIT {
         CompitoSvolto testCompitoSvolto = compitoSvoltoList.get(compitoSvoltoList.size() - 1);
         assertThat(testCompitoSvolto.getVoto()).isEqualTo(DEFAULT_VOTO);
         assertThat(testCompitoSvolto.getNote()).isEqualTo(DEFAULT_NOTE);
-    }
-
-    @Test
-    @Transactional
-    void createCompitoSvoltoWithExistingId() throws Exception {
-        // Create the CompitoSvolto with an existing ID
-        compitoSvolto.setId(1L);
-        CompitoSvoltoDTO compitoSvoltoDTO = compitoSvoltoMapper.toDto(compitoSvolto);
-
-        int databaseSizeBeforeCreate = compitoSvoltoRepository.findAll().size();
-
-        // An entity with an existing ID cannot be created, so this API call must fail
-        restCompitoSvoltoMockMvc
-            .perform(
-                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(compitoSvoltoDTO))
-            )
-            .andExpect(status().isBadRequest());
-
-        // Validate the CompitoSvolto in the database
-        List<CompitoSvolto> compitoSvoltoList = compitoSvoltoRepository.findAll();
-        assertThat(compitoSvoltoList).hasSize(databaseSizeBeforeCreate);
     }
 
     @Test

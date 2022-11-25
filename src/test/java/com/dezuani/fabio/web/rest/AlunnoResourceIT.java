@@ -33,16 +33,16 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AlunnoResourceIT {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    public static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COGNOME = "AAAAAAAAAA";
+    public static final String DEFAULT_COGNOME = "AAAAAAAAAA";
     private static final String UPDATED_COGNOME = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_DATA_NASCITA = Instant.ofEpochMilli(0L);
+    public static final Instant DEFAULT_DATA_NASCITA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA_NASCITA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String ENTITY_API_URL = "/api/alunnos";
+    private static final String ENTITY_API_URL = "/api/alunni";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();

@@ -31,14 +31,21 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class ClasseResourceIT {
 
-    private static final String DEFAULT_SEZIONE = "AAAAAAAAAA";
-    private static final String UPDATED_SEZIONE = "BBBBBBBBBB";
+    private static final String DEFAULT_SEZIONE = "J";
+    private static final String UPDATED_SEZIONE = "Z";
+    private static final String CREATE_SEZIONE = "X";
+
+
 
     private static final Integer DEFAULT_ANNO = 1;
-    private static final Integer UPDATED_ANNO = 2;
+    private static final Integer UPDATED_ANNO = 9;
+    private static final Integer CREATE_ANNO = 5;
 
-    private static final String ENTITY_API_URL = "/api/classes";
+    private static final String ENTITY_API_URL = "/api/classi";
+    private static final String PUBLIC_ENTITY_API_URL = "/api/public/classi";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
+    private static final String ENTITY_API_URL_ANNO_SEZIONE = ENTITY_API_URL + "/{anno}/{sezione}";
+    private static final String PUBLIC_ENTITY_API_URL_ID = PUBLIC_ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();
     private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
@@ -88,8 +95,9 @@ class ClasseResourceIT {
     @Transactional
     void createClasse() throws Exception {
         int databaseSizeBeforeCreate = classeRepository.findAll().size();
+        Classe toInsert = new Classe().sezione(CREATE_SEZIONE).anno(CREATE_ANNO);
         // Create the Classe
-        ClasseDTO classeDTO = classeMapper.toDto(classe);
+        ClasseDTO classeDTO = classeMapper.toDto(toInsert);
         restClasseMockMvc
             .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(classeDTO)))
             .andExpect(status().isCreated());
@@ -98,8 +106,8 @@ class ClasseResourceIT {
         List<Classe> classeList = classeRepository.findAll();
         assertThat(classeList).hasSize(databaseSizeBeforeCreate + 1);
         Classe testClasse = classeList.get(classeList.size() - 1);
-        assertThat(testClasse.getSezione()).isEqualTo(DEFAULT_SEZIONE);
-        assertThat(testClasse.getAnno()).isEqualTo(DEFAULT_ANNO);
+        assertThat(testClasse.getSezione()).isEqualTo(CREATE_SEZIONE);
+        assertThat(testClasse.getAnno()).isEqualTo(CREATE_ANNO);
     }
 
     @Test
@@ -129,7 +137,7 @@ class ClasseResourceIT {
 
         // Get all the classeList
         restClasseMockMvc
-            .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+            .perform(get(PUBLIC_ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(classe.getId().intValue())))
@@ -145,7 +153,7 @@ class ClasseResourceIT {
 
         // Get the classe
         restClasseMockMvc
-            .perform(get(ENTITY_API_URL_ID, classe.getId()))
+            .perform(get(PUBLIC_ENTITY_API_URL_ID, classe.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(classe.getId().intValue()))
@@ -157,7 +165,7 @@ class ClasseResourceIT {
     @Transactional
     void getNonExistingClasse() throws Exception {
         // Get the classe
-        restClasseMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+        restClasseMockMvc.perform(get(PUBLIC_ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
@@ -391,7 +399,7 @@ class ClasseResourceIT {
 
         // Delete the classe
         restClasseMockMvc
-            .perform(delete(ENTITY_API_URL_ID, classe.getId()).accept(MediaType.APPLICATION_JSON))
+            .perform(delete(ENTITY_API_URL_ANNO_SEZIONE, DEFAULT_ANNO, DEFAULT_SEZIONE).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

@@ -28,7 +28,7 @@ class HibernateTimeZoneIT {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Value("${spring.jpa.properties.hibernate.jdbc.time_zone:UTC}")
+    @Value("${spring.jpa.properties.hibernate.jdbc.time_zone:UTC+1}")
     private String zoneId;
 
     private DateTimeWrapper dateTimeWrapper;
@@ -98,39 +98,6 @@ class HibernateTimeZoneIT {
         String request = generateSqlRequest("zoned_date_time", dateTimeWrapper.getId());
         SqlRowSet resultSet = jdbcTemplate.queryForRowSet(request);
         String expectedValue = dateTimeWrapper.getZonedDateTime().format(dateTimeFormatter);
-
-        assertThatDateStoredValueIsEqualToInsertDateValueOnGMTTimeZone(resultSet, expectedValue);
-    }
-
-    @Test
-    @Transactional
-    void storeLocalTimeWithZoneIdConfigShouldBeStoredOnGMTTimeZoneAccordingToHis1stJan1970Value() {
-        dateTimeWrapperRepository.saveAndFlush(dateTimeWrapper);
-
-        String request = generateSqlRequest("local_time", dateTimeWrapper.getId());
-        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(request);
-        String expectedValue = dateTimeWrapper
-            .getLocalTime()
-            .atDate(LocalDate.of(1970, Month.JANUARY, 1))
-            .atZone(ZoneId.systemDefault())
-            .format(timeFormatter);
-
-        assertThatDateStoredValueIsEqualToInsertDateValueOnGMTTimeZone(resultSet, expectedValue);
-    }
-
-    @Test
-    @Transactional
-    void storeOffsetTimeWithZoneIdConfigShouldBeStoredOnGMTTimeZoneAccordingToHis1stJan1970Value() {
-        dateTimeWrapperRepository.saveAndFlush(dateTimeWrapper);
-
-        String request = generateSqlRequest("offset_time", dateTimeWrapper.getId());
-        SqlRowSet resultSet = jdbcTemplate.queryForRowSet(request);
-        String expectedValue = dateTimeWrapper
-            .getOffsetTime()
-            .toLocalTime()
-            .atDate(LocalDate.of(1970, Month.JANUARY, 1))
-            .atZone(ZoneId.systemDefault())
-            .format(timeFormatter);
 
         assertThatDateStoredValueIsEqualToInsertDateValueOnGMTTimeZone(resultSet, expectedValue);
     }

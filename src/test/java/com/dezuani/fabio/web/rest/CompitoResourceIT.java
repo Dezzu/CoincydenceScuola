@@ -34,13 +34,13 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class CompitoResourceIT {
 
-    private static final Instant DEFAULT_DATA = Instant.ofEpochMilli(0L);
+    public static final Instant DEFAULT_DATA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Materia DEFAULT_MATERIA = Materia.STORIA;
+    public static final Materia DEFAULT_MATERIA = Materia.STORIA;
     private static final Materia UPDATED_MATERIA = Materia.ITALIANO;
 
-    private static final String ENTITY_API_URL = "/api/compitos";
+    private static final String ENTITY_API_URL = "/api/compiti";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();

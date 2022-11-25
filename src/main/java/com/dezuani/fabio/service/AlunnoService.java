@@ -54,12 +54,14 @@ public class AlunnoService {
      */
     public AlunnoDTO save(AlunnoDTO alunnoDTO) {
         log.debug("Request to save Alunno : {}", alunnoDTO);
-        Classe classe = classeRepository
-            .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
-            .orElse(null);
-        if (classe == null) return null;
         Alunno alunno = alunnoMapper.toEntity(alunnoDTO);
-        alunno.setClasse(classe);
+        if(alunnoDTO.getClasse() != null) {
+            Classe classe = classeRepository
+                .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+                .orElse(null);
+            if (classe == null) return null;
+            alunno.setClasse(classe);
+        }
         alunno = alunnoRepository.save(alunno);
         return alunnoMapper.toDto(alunno);
     }
@@ -72,12 +74,14 @@ public class AlunnoService {
      */
     public AlunnoDTO update(AlunnoDTO alunnoDTO) {
         log.debug("Request to update Alunno : {}", alunnoDTO);
-        Classe classe = classeRepository
-            .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
-            .orElse(null);
-        if (classe == null) return null;
         Alunno alunno = alunnoMapper.toEntity(alunnoDTO);
-        alunno.setClasse(classe);
+        if(alunnoDTO.getClasse() != null) {
+            Classe classe = classeRepository
+                .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+                .orElse(null);
+            if (classe == null) return null;
+            alunno.setClasse(classe);
+        }
         alunno = alunnoRepository.save(alunno);
         return alunnoMapper.toDto(alunno);
     }
@@ -94,11 +98,13 @@ public class AlunnoService {
         return alunnoRepository
             .findById(alunnoDTO.getId())
             .map(existingAlunno -> {
-                Classe classe = classeRepository
-                    .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
-                    .orElse(null);
-                if (classe == null) return null;
-                existingAlunno.setClasse(classe);
+                if(alunnoDTO.getClasse() != null) {
+                    Classe classe = classeRepository
+                        .findByAnnoAndSezione(alunnoDTO.getClasse().getAnno(), alunnoDTO.getClasse().getSezione())
+                        .orElse(null);
+                    if (classe == null) return null;
+                    existingAlunno.setClasse(classe);
+                }
                 alunnoMapper.partialUpdate(existingAlunno, alunnoDTO);
                 return existingAlunno;
             })

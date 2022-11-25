@@ -17,7 +17,6 @@ public class CompitoSvoltoDTO implements Serializable {
 
     @Min(1)
     @Max(10)
-    @NotNull
     private Double voto;
 
     @Size(max = 500)
